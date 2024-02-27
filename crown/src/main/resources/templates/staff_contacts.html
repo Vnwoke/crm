@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section>
+    <h1>Recent Contact of Clients </h1>
+
+    <form method="post" th:action="@{/staff/contcat/contact}" th:object="${contactDto}">
+        <label>Contact ID: </label><input type="number" th:field="*{contactId}">
+        <label>Client: </label>
+        <button type="submit">Complete</button>
+    </form>
+
+    <div th:each="contact : ${contacts}">
+        <span th:text="${client.getId()}"></span>,
+        <span th:text="${client.getGuest()}"></span>, <span th:text="${contact.getClient().getName()}"></span>
+    </div>
+</section>
+
+</body>
+</html>

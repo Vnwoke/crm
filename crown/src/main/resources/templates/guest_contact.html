@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<section>
+  <h1>Contact Details</h1>
+
+  <form method="post" th:object="${contactDto}" th:action="@{/guest/contact}">
+    <label>Your name: </label><input type="text" th:field="*{guest}"><br>
+    <select th:field="*{clientId}">
+      <option th:each="client : ${clients}" th:value="${client.getId()}" th:text="${client.getName()}"></option>
+    </select><br>
+    <button type="submit">Submit</button>
+
+
+  </form>
+</section>
+</body>
+</html>
